@@ -25,11 +25,11 @@
                                     <td><a href="{{ $favorite['html_url'] }}">{{ $favorite['html_url'] }}</a></td>
                                     <td>{{ $favorite['owner_login'] }}</td>
                                     <td>{{ $favorite['stargazers_count'] }}</td>
-                                    <td><a class="favorite user" repo_id="{{ $favorite['repo_id'] }}" action="remove">Remove</a></td>
-                                    
+                                    <td><a class="favorite user remove" repo_id="{{ $favorite['repo_id'] }}" action="remove">Remove</a></td>
                                 </tr>
                             @endforeach
                             </table>
+                            {{ $favorites->links() }}
                         </div>
                     @endif
                 </div>

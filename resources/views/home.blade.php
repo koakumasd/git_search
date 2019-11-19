@@ -15,13 +15,21 @@
                     @endif
 
                     <form method="GET" action="{{ url('search_repo') }}">
-                        <input type="text" name="query" placeholder="Example player" value="{{ !empty($query)?$query:'' }}">
+                        <input type="text" name="query" placeholder="Example player" value="{{ !empty($query)?$query:'' }}" required>
                         <input type="submit" value="Submit">
                     </form>
 
-                    @if(!empty($results))
+                    @if(!empty($repositories))
                         <div class="row">
-
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <table>
                                 <tr>
                                     <th>Name</th>
@@ -30,16 +38,16 @@
                                     <th>Stargazers count</th>
                                     <th></th>
                                 </tr>
-                            @foreach($results as $result)
+                            @foreach($repositories->all() as $repository)
                                 <tr>
-                                    <td>{{ $result['name'] }}</td>
-                                    <td><a href="{{ $result['html_url'] }}">{{ $result['html_url'] }}</a></td>
-                                    <td>{{ $result['owner_login'] }}</td>
-                                    <td>{{ $result['stargazers_count'] }}</td>
+                                    <td>{{ $repository['name'] }}</td>
+                                    <td><a href="{{ $repository['html_url'] }}">{{ $repository['html_url'] }}</a></td>
+                                    <td>{{ $repository['owner_login'] }}</td>
+                                    <td>{{ $repository['stargazers_count'] }}</td>
                                     <td>
-                                        <button class="favorite search" repo_id="{{ $result['repo_id'] }}" name="{{ $result['name'] }}"  html_url="{{ $result['html_url'] }}"
-                                        owner_login="{{ $result['owner_login'] }}" stargazers_count="{{ $result['stargazers_count'] }}">
-                                            <i class="fa fa-heart{{ $result['is_favorite']!=true?'-o':'' }}" aria-hidden="true"></i>
+                                        <button class="favorite search {{ $repository['is_favorite']==true?'remove':'add' }}" repo_id="{{ $repository['repo_id'] }}" name="{{ $repository['name'] }}"  html_url="{{ $repository['html_url'] }}"
+                                        owner_login="{{ $repository['owner_login'] }}" stargazers_count="{{ $repository['stargazers_count'] }}">
+                                            <i class="fa fa-heart{{ $repository['is_favorite']!=true?'-o':'' }}" aria-hidden="true"></i>
                                         </button>
                                     </td>
                                     

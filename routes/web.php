@@ -18,7 +18,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/search_repo', 'RerpositoryController@searchRepo')->name('search_repo');
-Route::post('/add_to_favorite', 'RerpositoryController@addToFavorite');
-Route::post('/remove_from_favorite', 'RerpositoryController@removeFromFavorite');
-Route::get('/user_favorites', 'RerpositoryController@userFavorites')->name('user_favorites');
+Route::get('/search_repo', 'RepositoryController@searchRepo')->name('search_repo');
+Route::post('/add_to_favorite', 'RepositoryController@addToFavorite');
+Route::post('/remove_from_favorite', 'RepositoryController@removeFromFavorite');
+Route::get('/user_favorites', 'RepositoryController@userFavorites')->name('user_favorites');
