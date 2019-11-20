@@ -25,7 +25,7 @@ class StoreRepository extends FormRequest
     {
         return [
             'repo_id' => 'required',
-            'name' => 'required|max:255',            
+            'name' => 'required|max:255',
             'html_url' => 'required|max:255',
             'owner_login' => 'required|max:255',
             'stargazers_count' => 'required|max:255',

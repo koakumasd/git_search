@@ -14,7 +14,6 @@ class RemoveRepository extends FormRequest
     public function authorize()
     {
         return \Auth::check();
-
     }
 
     /**
@@ -28,7 +27,7 @@ class RemoveRepository extends FormRequest
             'repo_id' => 'required'
         ];
     }
-    
+
     public function messages()
     {
         return [

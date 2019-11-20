@@ -24,10 +24,10 @@ class SearchRepository extends FormRequest
     public function rules()
     {
         return [
-            'query'=>'required'
+            'query' => 'required'
         ];
     }
-    
+
     public function messages()
     {
         return [
