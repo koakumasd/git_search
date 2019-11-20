@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Helpers;
 use App\Favorite;
 use App\Http\Requests\{RemoveRepository, SearchRepository, StoreRepository};
+use Auth;
+use Helpers;
 
 
 class RepositoryController extends Controller
