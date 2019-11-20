@@ -43,7 +43,8 @@ class RepositoryController extends Controller
             $paginate = Helpers::paginate(
                 $request->getPathInfo(), 
                 $request->getQueryString(), 
-                $total_pages, 30
+                $total_pages, 
+                30
             );
             $repositories = collect();
             foreach ($results['items'] as $result) {
